@@ -2,9 +2,6 @@ import 'package:bildergaliere/class/appbar.dart';
 import 'package:bildergaliere/class/appdata.dart';
 import 'package:bildergaliere/class/bottombar.dart';
 import 'package:bildergaliere/class/home.dart';
-import 'package:bildergaliere/class/likes.dart';
-import 'package:bildergaliere/class/news.dart';
-import 'package:bildergaliere/class/profile.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -40,12 +37,10 @@ class _AppHomeState extends State<AppHome> {
 
   late String widgetName;
 
-  List<Widget> screens = [Home(), Likes(), Profile(), News()];
+  List<Widget> screens = [Home(), Home()];
   List<NavigationDestination> navigationItems = [
     NavigationDestination(icon: Icon(Icons.home), label: "home"),
-    NavigationDestination(icon: Icon(Icons.heart_broken), label: "likes"),
-    NavigationDestination(icon: Icon(Icons.person), label: "profile"),
-    NavigationDestination(icon: Icon(Icons.newspaper), label: "news"),
+    NavigationDestination(icon: Icon(Icons.home), label: "home"),
   ];
 
   @override

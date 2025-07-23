@@ -5,14 +5,14 @@ class GalleryItem extends StatelessWidget {
   const GalleryItem({
     super.key,
     required this.imageTitle,
-    required this.imageDate,
-    required this.imageDescription,
     required this.imagePath,
+    this.imageDescription = "",
+    this.imageDate = "",
   });
   final String imageTitle;
-  final String imageDate;
-  final String imageDescription;
   final String imagePath;
+  final String imageDescription;
+  final String imageDate;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class GalleryItem extends StatelessWidget {
       children: [
         Expanded(
           child: Image.asset(
-            this.imagePath,
+            imagePath,
             fit: BoxFit.cover,
             width: double.infinity,
           ),
