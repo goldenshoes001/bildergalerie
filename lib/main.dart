@@ -20,11 +20,25 @@ class AppHome extends StatefulWidget {
 
 class _AppHomeState extends State<AppHome> {
   int currentIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    widgetName = getCurrentScreenTitle();
+  }
+
   void _onItemTapped(int index) {
     setState(() {
       currentIndex = index;
+      widgetName = getCurrentScreenTitle();
     });
   }
+
+  String getCurrentScreenTitle() {
+    String widgetName = screens[currentIndex].runtimeType.toString();
+    return widgetName;
+  }
+
+  late String widgetName;
 
   List<Widget> screens = [Home(), Likes(), Profile(), News()];
   List<NavigationDestination> navigationItems = [
@@ -39,20 +53,20 @@ class _AppHomeState extends State<AppHome> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: Barwidget(title: ("myapp"), barColor: Appdata.barColor),
-        body: Center(
-          child: Container(
-            height: double.infinity,
-            color: Appdata.bodyBackground,
-            child: screens[currentIndex],
-          ),
-        ),
+        backgroundColor: Appdata.bodyBackground,
+        appBar: Barwidget(title: widgetName, barColor: Appdata.barColor),
+        body: screens[currentIndex],
         bottomNavigationBar: Bottombar(
           currentIndex: currentIndex,
           valueChanged: _onItemTapped,
           navigationItems: navigationItems,
           backgroundColor: Appdata.barColor,
           indicatorColor: Appdata.indicatorColor,
+          selectedIconColor: Appdata.selectedItemColor,
+          selectedLabelColor: Appdata.selectedItemColor,
+          unselectedIconColor: Appdata.buttomBarElemente,
+          selectedIconSize: Appdata.sizeSelectedIcons,
+          unselectedIconSize: Appdata.sizeIcons,
         ),
       ),
     );

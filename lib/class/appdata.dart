@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Appdata {
-  static final int r = 120;
-  static final int y = 195;
-  static final int b = 248;
+  static final int r = 25;
+  static final int y = 25;
+  static final int b = 112;
   static final int fontSizeBody = 14;
   static final int colorIndexDifference = 30;
-  static final _colorBrightnessFaktor = 0.5;
+  static final int colorIndexDifferenceButtons = 20;
+
+  static final _colorBrightnessFaktor = 1.0;
   static final int colorIndexBarColorRed = (r * _colorBrightnessFaktor).round();
   static final int colorIndexBarColorYellow = (y * _colorBrightnessFaktor)
       .round();
@@ -14,11 +16,11 @@ class Appdata {
       .round();
 
   static final int colorindexBodyColorRed =
-      colorIndexBarColorRed - colorIndexDifference;
+      colorIndexBarColorRed + colorIndexDifference;
   static final int colorIndexBodyColorYellow =
-      colorIndexBarColorYellow - colorIndexDifference;
+      colorIndexBarColorYellow + colorIndexDifference;
   static final int colorIndexBodyColorBlue =
-      colorIndexBarColorBlue - colorIndexDifference;
+      colorIndexBarColorBlue + colorIndexDifference;
 
   static final int colorIndexIndicatorColorRed =
       colorIndexBarColorRed + colorIndexDifference;
@@ -42,7 +44,7 @@ class Appdata {
     colorIndexBodyColorBlue,
     1,
   );
-  static final Color selectedItemColor = Color.fromRGBO(0, 183, 255, 1);
+  static final Color selectedItemColor = Colors.lightBlue;
   static final Color indicatorColor = Color.fromRGBO(
     colorIndexIndicatorColorRed,
     colorIndexIndicatorColorYellow,

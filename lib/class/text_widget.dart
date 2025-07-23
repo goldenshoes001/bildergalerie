@@ -8,6 +8,7 @@ class TextWidget extends StatelessWidget {
   final String fontFamily;
   final TextAlign textAlign;
   final TextOverflow textOverflow;
+  final FontStyle fontStyle;
 
   final int? maxlines;
   final bool softwrap;
@@ -23,6 +24,7 @@ class TextWidget extends StatelessWidget {
     this.textAlign = TextAlign.center,
     this.textOverflow = TextOverflow.clip,
     this.softwrap = true,
+    this.fontStyle = FontStyle.normal,
   });
   @override
   Widget build(BuildContext context) {
@@ -38,6 +40,7 @@ class TextWidget extends StatelessWidget {
           fontSize: fontSize,
           color: color,
           fontWeight: fontWeight,
+          fontStyle: fontStyle,
         ),
       ),
     );
