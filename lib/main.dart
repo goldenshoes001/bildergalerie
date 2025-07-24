@@ -1,3 +1,4 @@
+import 'package:bildergaliere/class/about_me.dart';
 import 'package:bildergaliere/class/appbar.dart';
 import 'package:bildergaliere/class/appdata.dart';
 import 'package:bildergaliere/class/bottombar.dart';
@@ -37,10 +38,10 @@ class _AppHomeState extends State<AppHome> {
 
   late String widgetName;
 
-  List<Widget> screens = [Home(), Home()];
+  List<Widget> screens = [Home(), AboutMe()];
   List<NavigationDestination> navigationItems = [
     NavigationDestination(icon: Icon(Icons.home), label: "home"),
-    NavigationDestination(icon: Icon(Icons.home), label: "home"),
+    NavigationDestination(icon: Icon(Icons.person), label: "About me"),
   ];
 
   @override
