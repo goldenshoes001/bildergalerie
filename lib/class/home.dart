@@ -1,3 +1,4 @@
+import 'package:bildergaliere/class/appdata.dart';
 import 'package:bildergaliere/class/detail_screen.dart';
 import 'package:bildergaliere/class/gallery_data.dart';
 import 'package:bildergaliere/class/galleryitem.dart';
@@ -8,18 +9,17 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<GalleryItem> galerieItems = GalleryData.galleryData;
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+        crossAxisCount: 1,
         childAspectRatio: 1.5,
         mainAxisSpacing: 10,
       ),
-      itemCount: galerieItems.length,
+      itemCount: galleryData.length,
       scrollDirection: Axis.vertical,
 
       itemBuilder: (BuildContext context, int index) {
-        final GalleryItem currentItem = galerieItems[index];
+        final GalleryItem currentItem = galleryData[index];
         return GestureDetector(
           onTap: () {
             Navigator.push(
@@ -34,11 +34,17 @@ class Home extends StatelessWidget {
               ),
             );
           },
-          child: GalleryItem(
-            imageTitle: currentItem.imageTitle,
-            imagePath: currentItem.imagePath,
-            imageDate: currentItem.imageDate,
-            imageDescription: currentItem.imageDescription,
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            color: Appdata.barColor,
+            child: GalleryItem(
+              imageTitle: currentItem.imageTitle,
+              imagePath: currentItem.imagePath,
+              imageDate: currentItem.imageDate,
+              imageDescription: currentItem.imageDescription,
+            ),
           ),
         );
       },

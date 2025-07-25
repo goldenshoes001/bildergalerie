@@ -20,10 +20,16 @@ class GalleryItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(
-          child: Image.asset(
-            imagePath,
-            fit: BoxFit.cover,
-            width: double.infinity,
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15),
+              topRight: Radius.circular(15),
+            ),
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
           ),
         ),
         SizedBox(height: 10),
