@@ -9,45 +9,54 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 1,
-        childAspectRatio: 1.5,
-        mainAxisSpacing: 10,
-      ),
-      itemCount: galleryData.length,
-      scrollDirection: Axis.vertical,
+    return Column(
+      children: [
+        SizedBox(height: 10),
+        Expanded(
+          child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 1,
+              childAspectRatio: 1.5,
+              mainAxisSpacing: 10,
+            ),
+            itemCount: galleryData.length,
+            scrollDirection: Axis.vertical,
 
-      itemBuilder: (BuildContext context, int index) {
-        final GalleryItem currentItem = galleryData[index];
-        return GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => DetailScreen(
-                  imageTitle: currentItem.imageTitle,
-                  imageDate: currentItem.imageDate,
-                  imageDescription: currentItem.imageDescription,
-                  imagePath: currentItem.imagePath,
+            itemBuilder: (BuildContext context, int index) {
+              final GalleryItem currentItem = galleryData[index];
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailScreen(
+                        imageTitle: currentItem.imageTitle,
+                        imageDate: currentItem.imageDate,
+                        imageDescription: currentItem.imageDescription,
+                        imagePath: currentItem.imagePath,
+                      ),
+                    ),
+                  );
+                },
+
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  color: Appdata.barColor,
+                  child: GalleryItem(
+                    imageTitle: currentItem.imageTitle,
+                    imagePath: currentItem.imagePath,
+                    imageDate: currentItem.imageDate,
+                    imageDescription: currentItem.imageDescription,
+                  ),
                 ),
-              ),
-            );
-          },
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            color: Appdata.barColor,
-            child: GalleryItem(
-              imageTitle: currentItem.imageTitle,
-              imagePath: currentItem.imagePath,
-              imageDate: currentItem.imageDate,
-              imageDescription: currentItem.imageDescription,
-            ),
+              );
+            },
           ),
-        );
-      },
+        ),
+        SizedBox(height: 10),
+      ],
     );
   }
 }
